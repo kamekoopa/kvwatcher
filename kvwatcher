@@ -1,0 +1,32 @@
+#!/bin/env python
+# -*- coding: utf-8 -*-
+
+if __name__ == '__main__':
+    import argparse
+    import logging
+    from src.service import DataStoreWatchService
+    from yaml import load
+    from signal import signal, SIGTERM, SIGQUIT
+
+    logging.basicConfig(level=logging.INFO)
+
+    parser = argparse.ArgumentParser(description="desc")
+    parser.add_argument("-c", "--config", type=str, default="/etc/kvwatcher/config.yml",
+                        help="configuration yml file (default '/etc/kvwatcher/config.yml')")
+
+    parsed = parser.parse_args()
+
+    service = DataStoreWatchService(
+        load(open(parsed.config))
+    )
+
+    def shutdown(sig, frame):
+        import logging
+        service.shutdown()
+    signal(SIGTERM, shutdown)
+    signal(SIGQUIT, shutdown)
+
+    try:
+        service.start()
+    except KeyboardInterrupt as e:
+        service.shutdown()

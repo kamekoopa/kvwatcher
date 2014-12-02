@@ -1,0 +1,4 @@
+data_store: etcd://example.com:4001/services/app
+template_file: /etc/kvwatcher/nginx.conf.jinja2
+generating_dest: /etc/nginx/conf.d/nginx.conf
+reload_cmd: systemctl reload nginx

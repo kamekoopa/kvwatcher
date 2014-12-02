@@ -1,0 +1,13 @@
+[Unit]
+Description=kvwatcher
+After=nginx.service
+
+[Service]
+PIDFile=/run/kvwatcher.pid
+ExecStart=/usr/local/bin/kvwatcher
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

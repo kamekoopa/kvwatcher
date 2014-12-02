@@ -1,0 +1,7 @@
+*.pyc
+*.iml
+.idea/
+.python-version
+build
+kvwatcher.egg-info
+dist

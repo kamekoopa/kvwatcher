@@ -1,0 +1,20 @@
+upstream containers {
+{% for key, value in app.items() %}
+    # {{ key }}
+    server {{ value }};{% endfor %}
+
+    keepalive 128;
+}
+
+server {
+    listen 8080 default_server;
+    server_name localhost;
+
+    location / {
+        proxy_set_header host $host;
+        proxy_set_header x-real-ip $remote_addr;
+        proxy_set_header x-forwarded-for $proxy_add_x_forwarded_for;
+        proxy_pass http://containers;
+        break;
+    }
+}
