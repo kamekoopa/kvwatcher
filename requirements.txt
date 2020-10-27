@@ -1,6 +1,6 @@
 PyYAML==3.11
 cffi==0.8.6
-cryptography==0.6.1
+cryptography==3.2
 pyOpenSSL==0.14
 pycparser==2.10
 python-etcd==0.3.2
