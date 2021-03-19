@@ -5,7 +5,7 @@ version = "0.0.1.a1"
 requires = [
     "PyYAML==3.11",
     "python-etcd==0.3.2",
-    "Jinja2==2.7.3",
+    "Jinja2==2.11.3",
 ]
 
 with open("README.rst") as f:
