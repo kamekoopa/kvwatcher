@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 version = "0.0.1.a1"
 
 requires = [
-    "PyYAML==3.11",
+    "PyYAML==5.4",
     "python-etcd==0.3.2",
     "Jinja2==2.7.3",
 ]
